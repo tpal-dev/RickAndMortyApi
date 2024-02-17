@@ -17,10 +17,10 @@ struct ApiClient {
 }
 
 extension DependencyValues {
-  var apiClient: ApiClient {
-    get { self[ApiClient.self] }
-    set { self[ApiClient.self] = newValue }
-  }
+    var apiClient: ApiClient {
+        get { self[ApiClient.self] }
+        set { self[ApiClient.self] = newValue }
+    }
 }
 
 extension ApiClient: DependencyKey {
@@ -39,5 +39,3 @@ extension ApiClient: TestDependencyKey {
         fetchCharacters: { _ in .mock() }
     )
 }
-
-

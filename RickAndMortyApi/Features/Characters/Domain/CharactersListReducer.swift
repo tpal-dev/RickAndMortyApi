@@ -20,10 +20,11 @@ struct CharactersListReducer: Reducer {
     @ObservableState
     struct State: Equatable {
         var dataLoadingStatus = DataLoadingStatus.notStarted
-        var characters: [Character]?
+        var characters: [Character] = []
         var pageCount = 0
-        var shouldShowError: Bool {
-            dataLoadingStatus == .error
+
+        var isLoadedAll: Bool {
+            dataLoadingStatus == .paginationLimitReached
         }
 
         var isLoading: Bool {
@@ -34,9 +35,9 @@ struct CharactersListReducer: Reducer {
     enum Action: Equatable {
         case fetchCharacters
         case fetchCharactersResponse(TaskResult<CharactersDTO>)
+        case resetState
     }
 
-   
     @Dependency(\.apiClient) var apiClient
 
     var body: some ReducerOf<Self> {
@@ -61,7 +62,15 @@ struct CharactersListReducer: Reducer {
 
             case let .fetchCharactersResponse(.success(response)):
                 state.dataLoadingStatus = state.pageCount < response.info.count ? .success : .paginationLimitReached
-                state.characters = response.results
+
+                for character in response.results {
+                    state.characters.append(character)
+                }
+                return .none
+            case .resetState:
+                state.characters = []
+                state.pageCount = 0
+                state.dataLoadingStatus = .notStarted
                 return .none
             }
         }
