@@ -9,43 +9,28 @@ import SwiftUI
 
 struct CharacterRow: View {
     var character: Character
-    let imageSize: CGFloat  = 50
+    var isFavorite: Bool
+    var onTapFavorite: () -> Void
+
     var body: some View {
         HStack {
-            CachedAsyncImage(
-                url: URL(string: character.image)!
-            ) { phase in
-                switch phase {
-                case .success(let image):
-                    HStack {
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: imageSize, height: imageSize)
-                    }
-                case .failure:
-                    Text("❌").font(.system(size: 40)).frame(width: imageSize, height: imageSize)
-                case .empty:
-                    HStack {
-                        ProgressView()
-                            .frame(height: imageSize)
-                       
-                    }
-                @unknown default:
-                    // AsyncImagePhase is not marked as @frozen.
-                    // We need to support new cases in the future.
-                    Image(systemName: "questionmark")
-                }}
+            CharacterImage(imageUrl: character.image, imageSize: 50)
             Text(character.name)
-
             Spacer()
+
+            Image(systemName: isFavorite ? "heart.fill" : "heart")
+                .padding(.trailing)
+                .foregroundColor(.red)
+                .onTapGesture {
+                    onTapFavorite()
+                }
         }
     }
 }
 
 #Preview {
     Group {
-        CharacterRow(character: Character.mock)
-        CharacterRow(character: Character.mock)
+        CharacterRow(character: Character.mock, isFavorite: true) {}
+        CharacterRow(character: Character.mock, isFavorite: false) {}
     }
 }

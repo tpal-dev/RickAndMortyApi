@@ -21,6 +21,11 @@
 		5293EE852B814F2F0001ECBB /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293EE842B814F2F0001ECBB /* StringExtension.swift */; };
 		5293EE892B814F6A0001ECBB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293EE882B814F6A0001ECBB /* DateExtension.swift */; };
 		5293EE8B2B8152D50001ECBB /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293EE8A2B8152D50001ECBB /* CachedAsyncImage.swift */; };
+		5293EE8D2B815E130001ECBB /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293EE8C2B815E130001ECBB /* CharacterDetailView.swift */; };
+		5293EE8F2B8160720001ECBB /* CharacterImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293EE8E2B8160720001ECBB /* CharacterImage.swift */; };
+		5293EE912B8174DB0001ECBB /* EpisodeDetailsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293EE902B8174DB0001ECBB /* EpisodeDetailsReducer.swift */; };
+		5293EE932B8176300001ECBB /* EpisodeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293EE922B8176300001ECBB /* EpisodeDTO.swift */; };
+		5293EE952B817A4C0001ECBB /* EpisodeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293EE942B817A4C0001ECBB /* EpisodeDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +44,11 @@
 		5293EE842B814F2F0001ECBB /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		5293EE882B814F6A0001ECBB /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		5293EE8A2B8152D50001ECBB /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
+		5293EE8C2B815E130001ECBB /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
+		5293EE8E2B8160720001ECBB /* CharacterImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImage.swift; sourceTree = "<group>"; };
+		5293EE902B8174DB0001ECBB /* EpisodeDetailsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsReducer.swift; sourceTree = "<group>"; };
+		5293EE922B8176300001ECBB /* EpisodeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDTO.swift; sourceTree = "<group>"; };
+		5293EE942B817A4C0001ECBB /* EpisodeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				5293EE782B8111E80001ECBB /* CharactersDTO.swift */,
+				5293EE922B8176300001ECBB /* EpisodeDTO.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -140,6 +151,9 @@
 			children = (
 				5293EE7C2B8125FB0001ECBB /* CharactersListView.swift */,
 				5293EE812B814C5E0001ECBB /* CharacterRow.swift */,
+				5293EE8C2B815E130001ECBB /* CharacterDetailView.swift */,
+				5293EE8E2B8160720001ECBB /* CharacterImage.swift */,
+				5293EE942B817A4C0001ECBB /* EpisodeDetailView.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -148,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				5293EE7A2B8114830001ECBB /* CharactersListReducer.swift */,
+				5293EE902B8174DB0001ECBB /* EpisodeDetailsReducer.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -257,11 +272,16 @@
 				5293EE6C2B8110540001ECBB /* DataLoadingStatus.swift in Sources */,
 				5293EE892B814F6A0001ECBB /* DateExtension.swift in Sources */,
 				5293EE792B8111E80001ECBB /* CharactersDTO.swift in Sources */,
+				5293EE8D2B815E130001ECBB /* CharacterDetailView.swift in Sources */,
 				5293EE822B814C5E0001ECBB /* CharacterRow.swift in Sources */,
 				5293EE7D2B8125FB0001ECBB /* CharactersListView.swift in Sources */,
 				5293EE5B2B810B9A0001ECBB /* RickAndMortyApiApp.swift in Sources */,
+				5293EE912B8174DB0001ECBB /* EpisodeDetailsReducer.swift in Sources */,
 				5293EE8B2B8152D50001ECBB /* CachedAsyncImage.swift in Sources */,
+				5293EE952B817A4C0001ECBB /* EpisodeDetailView.swift in Sources */,
 				5293EE852B814F2F0001ECBB /* StringExtension.swift in Sources */,
+				5293EE932B8176300001ECBB /* EpisodeDTO.swift in Sources */,
+				5293EE8F2B8160720001ECBB /* CharacterImage.swift in Sources */,
 				5293EE802B81415B0001ECBB /* ErrorView.swift in Sources */,
 				5293EE7B2B8114830001ECBB /* CharactersListReducer.swift in Sources */,
 				5293EE6F2B81107C0001ECBB /* ApiClient.swift in Sources */,

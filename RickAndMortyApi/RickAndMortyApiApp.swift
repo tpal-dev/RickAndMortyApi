@@ -12,6 +12,7 @@ import SwiftUI
 struct RickAndMortyApiApp: App {
     static let charactersListViewStore = Store(initialState: CharactersListReducer.State()) {
         CharactersListReducer()
+            ._printChanges()
     }
 
     var body: some Scene {

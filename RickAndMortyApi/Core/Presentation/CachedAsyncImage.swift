@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CachedAsyncImage<Content>: View where Content: View {
-
     private let url: URL
     private let scale: CGFloat
     private let transaction: Transaction
@@ -27,7 +26,6 @@ struct CachedAsyncImage<Content>: View where Content: View {
     }
 
     var body: some View {
-
         if let cached = ImageCache[url] {
             let _ = print("cached \(url.absoluteString)")
             content(.success(cached))
@@ -44,7 +42,7 @@ struct CachedAsyncImage<Content>: View where Content: View {
     }
 
     func cacheAndRender(phase: AsyncImagePhase) -> some View {
-        if case .success(let image) = phase {
+        if case let .success(image) = phase {
             ImageCache[url] = image
         }
 
@@ -56,15 +54,15 @@ struct CachedAsyncImage_Previews: PreviewProvider {
     static var previews: some View {
         CachedAsyncImage(
             url:
-                URL(string: Character.mock.image)!
-        
+            URL(string: Character.mock.image)!
+
         ) { phase in
             switch phase {
             case .empty:
                 ProgressView()
-            case .success(let image):
+            case let .success(image):
                 image
-            case .failure(let error):
+            case .failure:
                 Text("❌ **Error**").font(.system(size: 30))
             @unknown default:
                 fatalError()
@@ -73,9 +71,8 @@ struct CachedAsyncImage_Previews: PreviewProvider {
     }
 }
 
-
-fileprivate class ImageCache {
-    static private var cache: [URL: Image] = [:]
+private enum ImageCache {
+    private static var cache: [URL: Image] = [:]
 
     static subscript(url: URL) -> Image? {
         get {

@@ -28,7 +28,14 @@ struct CharactersListView: View {
             NavigationView {
                 List {
                     ForEach(store.characters, id: \.id) { character in
-                        CharacterRow(character: character)
+
+                        NavigationLink {
+                            CharacterDetailView(character: character)
+                        } label: {
+                            CharacterRow(character: character, isFavorite: store.favoritesList.contains(character.id)) {
+                                store.send(.toggleFavorite(character))
+                            }
+                        }
                     }
                     if store.isLoading {
                         ProgressView()

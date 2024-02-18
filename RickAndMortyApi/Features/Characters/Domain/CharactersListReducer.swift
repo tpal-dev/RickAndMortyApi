@@ -5,13 +5,6 @@
 //  Created by Tomasz Paluszkiewicz on 17/02/2024.
 //
 
-//
-//  CounterFeature.swift
-//  RickAndMortyApi
-//
-//  Created by Tomasz Paluszkiewicz on 16/02/2024.
-//
-
 import ComposableArchitecture
 import SwiftUI
 
@@ -22,6 +15,7 @@ struct CharactersListReducer: Reducer {
         var dataLoadingStatus = DataLoadingStatus.notStarted
         var characters: [Character] = []
         var pageCount = 0
+        var favoritesList: [Int] = []
 
         var isLoadedAll: Bool {
             dataLoadingStatus == .paginationLimitReached
@@ -36,6 +30,7 @@ struct CharactersListReducer: Reducer {
         case fetchCharacters
         case fetchCharactersResponse(TaskResult<CharactersDTO>)
         case resetState
+        case toggleFavorite(Character)
     }
 
     @Dependency(\.apiClient) var apiClient
@@ -71,6 +66,15 @@ struct CharactersListReducer: Reducer {
                 state.characters = []
                 state.pageCount = 0
                 state.dataLoadingStatus = .notStarted
+                return .none
+            case let .toggleFavorite(character):
+                let id = character.id
+                state.favoritesList.contains(id) ?
+                state.favoritesList.removeAll(where: { favId in
+                    id == favId
+                }) :
+                    state.favoritesList.append(id)
+
                 return .none
             }
         }

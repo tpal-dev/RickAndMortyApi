@@ -27,9 +27,25 @@ struct Character: Codable, Equatable, Identifiable {
     let origin: Origin
     let location: Location
     let image: String
-    let episode: [String]
+    private let episode: [String]
     let url: String
     let created: String
+
+    var episodes: [Episode] {
+        return episode.map {
+            var name: String = "Episode "
+            if let range = $0.range(of: "episode/") {
+                let number = $0[range.upperBound...]
+                name = name + String(number)
+            }
+            return Episode(name: name, url: $0)
+        }
+    }
+
+    struct Episode: Codable, Equatable, Hashable {
+        let name: String
+        let url: String
+    }
 
     struct Origin: Codable, Equatable {
         let name: String
